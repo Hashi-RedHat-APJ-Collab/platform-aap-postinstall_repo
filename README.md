@@ -1,5 +1,7 @@
 # platform-aap-postinstall_repo
 
+## Forked from https://github.com/ansible/product-demos-postinstall/
+
 This repo is used for AAP post install bootstrap
 
 ```
