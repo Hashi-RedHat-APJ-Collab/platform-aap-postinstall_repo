@@ -8,7 +8,7 @@ apd_verify_ssl: false
 
 controller_validate_certs: false
 controller_configuration_async_delay: 10
-controller_configuration_async_retries: 60
+controller_configuration_async_retries: 120
 
 controller_credentials:
   - name: Automation Hub
