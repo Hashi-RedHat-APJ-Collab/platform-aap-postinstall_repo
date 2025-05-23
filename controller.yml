@@ -7,7 +7,7 @@ apd_git_repo_branch: main
 apd_verify_ssl: false
 
 controller_validate_certs: false
-controller_configuration_async_delay: 20
+controller_configuration_async_delay: 30
 controller_configuration_async_retries: 120
 
 controller_credentials:
