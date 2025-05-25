@@ -6,6 +6,9 @@ apd_git_repo: https://github.com/ansible/product-demos
 apd_git_repo_branch: main
 apd_verify_ssl: false
 
+hashivault_git_repo: https://github.com/Hashi-RedHat-APJ-Collab/platform-aap-vault-config  
+hashivault_git_repo_branch: main
+
 controller_validate_certs: false
 controller_configuration_async_delay: 5
 
@@ -63,6 +66,15 @@ controller_projects:
     scm_branch: '{{ apd_git_repo_branch }}'
     default_environment: Product Demos EE
     wait: true
+
+  - name: Hashicorp Vault Demos
+    organization: Default
+    scm_type: git
+    scm_url: '{{ hashivault_git_repo }}'
+    scm_branch: '{{ hashivault_git_repo_branch }}'
+    default_environment: default
+    wait: true
+
 
 controller_templates:
   - name: "Product Demos | Single demo setup"
