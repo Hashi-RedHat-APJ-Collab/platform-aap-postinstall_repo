@@ -72,7 +72,6 @@ controller_projects:
     scm_type: git
     scm_url: '{{ hashivault_git_repo }}'
     scm_branch: '{{ hashivault_git_repo_branch }}'
-    default_environment: default
     wait: true
 
 
