@@ -35,6 +35,7 @@ controller_credentials:
     inputs:
       url: https://console.redhat.com/api/automation-hub/
       auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+      token: '{{ automationhub_api_token }}'
 
 
   - name: Controller Credential
@@ -72,6 +73,7 @@ controller_projects:
     scm_type: git
     scm_url: '{{ hashivault_git_repo }}'
     scm_branch: '{{ hashivault_git_repo_branch }}'
+    default_environment: Product Demos EE
     wait: true
 
 
