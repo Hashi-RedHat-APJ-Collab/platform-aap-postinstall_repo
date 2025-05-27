@@ -126,3 +126,49 @@ controller_templates:
             - openshift
             - satellite
             - windows
+  - name: "Hashicorp Vault demo setup"
+    job_type: run
+    inventory: Demo Inventory
+    project: Hashicorp Vault Demos
+    playbook: playbooks/aap/update_credentials.yml
+    credentials: Controller Credential
+    execution_environment: Product Demos EE
+    allow_simultaneous: true
+    survey_enabled: true
+    survey_spec:
+      name: ''
+      description: ''
+      spec:
+        - type: text
+          question_name: tenant
+          variable: tenant
+          required: true
+          default: 'demo'
+        - type: text
+          question_name: organization_name
+          variable: organization_name
+          required: true
+          default: 'Default'
+        - type: text
+          question_name: vault_url
+          variable: vault_url
+          required: true
+          default: 'https://tf-aap-public-vault-76d1afab.7739a0fc.z1.hashicorp.cloud:8200'
+        - type: text
+          question_name: vault_namespace
+          variable: vault_namespace
+          required: true  
+          default: 'admin/hashi-redhat'
+        - type: password
+          question_name: secret_id
+          variable: secret_id
+          required: true
+        - type: password
+          question_name: role_id
+          variable: role_id
+          required: true
+        - type: text
+          question_name: aap_url
+          variable: aap_url
+          required: true
+          default: 'https://aap.demo.local'
