@@ -68,7 +68,7 @@ controller_projects:
     default_environment: Product Demos EE
     wait: true
 
-  - name: Hashicorp Vault Demos
+  - name: "Hashicorp Vault Demos"
     organization: Default
     scm_type: git
     scm_url: '{{ hashivault_git_repo }}'
@@ -126,11 +126,12 @@ controller_templates:
             - openshift
             - satellite
             - windows
+
   - name: "Hashicorp Vault demo setup"
     job_type: run
     inventory: Demo Inventory
     project: Hashicorp Vault Demos
-    playbook: playbooks/aap/update_credentials.yml
+    playbook: "playbooks/aap/update_credentials.yml"
     credentials: Controller Credential
     execution_environment: Product Demos EE
     allow_simultaneous: true
@@ -172,8 +173,3 @@ controller_templates:
           variable: aap_url
           required: true
           default: 'https://aap.demo.local'
-        - type: text
-          question_name: state
-          variable: state
-          required: true
-          default: 'present'
