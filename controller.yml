@@ -173,3 +173,8 @@ controller_templates:
           variable: aap_url
           required: true
           default: 'https://aap.demo.local'
+        - type: text
+          question_name: state
+          variable: state
+          required: true
+          default: 'present'
