@@ -148,17 +148,17 @@ controller_templates:
         - type: text
           question_name: organization_name
           variable: organization_name
-          required: true
+          required: false
           default: 'Default'
         - type: text
           question_name: vault_url
           variable: vault_url
-          required: true
+          required: false
           default: 'https://tf-aap-public-vault-76d1afab.7739a0fc.z1.hashicorp.cloud:8200'
         - type: text
           question_name: vault_namespace
           variable: vault_namespace
-          required: true  
+          required: false  
           default: 'admin/hashi-redhat'
         - type: password
           question_name: secret_id
@@ -176,5 +176,10 @@ controller_templates:
         - type: text
           question_name: state
           variable: state
-          required: true
+          required: false
           default: 'present'
+        - type: text
+          question_name: ssh_user
+          variable: machine_user
+          required: false
+          default: 'ec2-user'
