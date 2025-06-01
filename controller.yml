@@ -73,6 +73,7 @@ controller_projects:
     scm_type: git
     scm_url: '{{ hashivault_git_repo }}'
     scm_branch: '{{ hashivault_git_repo_branch }}'
+    scm_update_on_launch: true
     default_environment: Product Demos EE
     wait: true
 
