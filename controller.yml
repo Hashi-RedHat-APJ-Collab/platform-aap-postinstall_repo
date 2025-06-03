@@ -9,6 +9,9 @@ apd_verify_ssl: false
 hashivault_git_repo: https://github.com/Hashi-RedHat-APJ-Collab/platform-aap-vault-config  
 hashivault_git_repo_branch: main
 
+aap_postdeploy_git_repo: https://github.com/Hashi-RedHat-APJ-Collab/demo-aap-post-deploy
+aap_postdeploy_git_repo_branch: main
+
 controller_validate_certs: false
 controller_configuration_async_delay: 5
 
@@ -73,6 +76,15 @@ controller_projects:
     scm_type: git
     scm_url: '{{ hashivault_git_repo }}'
     scm_branch: '{{ hashivault_git_repo_branch }}'
+    scm_update_on_launch: true
+    default_environment: Product Demos EE
+    wait: true
+
+  - name: "Ansible Automation Post Deploy Demos"
+    organization: Default
+    scm_type: git
+    scm_url: '{{ aap_postdeploy_git_repo }}' 
+    scm_branch: '{{ aap_postdeploy_git_repo_branch }}'
     scm_update_on_launch: true
     default_environment: Product Demos EE
     wait: true
