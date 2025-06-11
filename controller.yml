@@ -6,6 +6,8 @@ apd_git_repo: https://github.com/ansible/product-demos
 apd_git_repo_branch: main
 apd_verify_ssl: false
 
+servicenow_ee_image: quay.io/fredmkson/ee_snow:latest
+
 hashivault_git_repo: https://github.com/Hashi-RedHat-APJ-Collab/platform-aap-vault-config  
 hashivault_git_repo_branch: main
 
@@ -55,6 +57,8 @@ controller_credentials:
 controller_execution_environments:
   - name: Product Demos EE
     image: '{{ apd_ee_image }}'
+  - name: ServiceNow Demos EE
+    image: '{{ servicenow_ee_image }}'
 
 controller_organizations:
   - name: Default
