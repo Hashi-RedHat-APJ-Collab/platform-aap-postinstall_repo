@@ -1,0 +1,11 @@
+---
+eda_rulebook_activations:
+  - name: "TFC webhook"
+    description: ""
+    is_enabled: "True"
+    status: "running"
+    rulebook_name: "tfc-webhook.yml"
+    organization_name: "Default"
+    project_name: "demo-aap-post-deploy"
+    decision_environment: "Default Decision Environment"
+...

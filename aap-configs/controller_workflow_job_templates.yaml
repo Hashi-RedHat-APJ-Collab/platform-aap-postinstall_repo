@@ -1,0 +1,364 @@
+---
+controller_workflows:
+  - name: "AAP Post Deployment"
+    description: !unsafe ''
+    organization: "Default"
+    simplified_workflow_nodes:
+      - identifier: "Inventory Sync"
+        workflow_job_template: "AAP Post Deployment"
+        unified_job_template: "Fred US-East-2"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "061d7c35-2af9-4ac9-a1c1-37d933878204"
+          - "b66bd6cf-3fc1-47fe-ac77-05da2c5efadd"
+      - identifier: "f523c7c7-1e9e-4af0-a76e-53c8a87cbd23"
+        workflow_job_template: "AAP Post Deployment"
+        unified_job_template: "Close SNOW Change Record"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "b341de58-aabd-47f8-adff-bdfc41c00b02"
+        workflow_job_template: "AAP Post Deployment"
+        unified_job_template: "Post Validation"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "a1fa2c53-1a1a-4af0-941c-ed0389d011d9"
+        failure_nodes:
+          - "60217616-30c8-4a59-9581-91ca9985045b"
+      - identifier: "b66bd6cf-3fc1-47fe-ac77-05da2c5efadd"
+        workflow_job_template: "AAP Post Deployment"
+        unified_job_template: "Install Application"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "a8d0376d-3117-469b-987d-0be1aac081c0"
+        failure_nodes:
+          - "60217616-30c8-4a59-9581-91ca9985045b"
+      - identifier: "a1fa2c53-1a1a-4af0-941c-ed0389d011d9"
+        workflow_job_template: "AAP Post Deployment"
+        unified_job_template: "Update SNOW CMDB"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "f523c7c7-1e9e-4af0-a76e-53c8a87cbd23"
+      - identifier: "061d7c35-2af9-4ac9-a1c1-37d933878204"
+        workflow_job_template: "AAP Post Deployment"
+        unified_job_template: "Install Vault Agent"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "a8d0376d-3117-469b-987d-0be1aac081c0"
+        failure_nodes:
+          - "60217616-30c8-4a59-9581-91ca9985045b"
+      - identifier: "60217616-30c8-4a59-9581-91ca9985045b"
+        workflow_job_template: "AAP Post Deployment"
+        unified_job_template: "Raise Incident Ticket"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "a8d0376d-3117-469b-987d-0be1aac081c0"
+        workflow_job_template: "AAP Post Deployment"
+        unified_job_template: "Security Harden"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "b341de58-aabd-47f8-adff-bdfc41c00b02"
+        failure_nodes:
+          - "60217616-30c8-4a59-9581-91ca9985045b"
+    ask_variables_on_launch: "False"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    limit: ""
+    ask_limit_on_launch: false
+    ask_inventory_on_launch: true
+    webhook_service: ""
+    extra_vars: ""
+    survey_enabled: false
+  - name: "Auto Healing Drift Detection"
+    description: !unsafe ''
+    organization: "Default"
+    simplified_workflow_nodes:
+      - identifier: "80e1cbdc-f120-46f9-88bd-94343014d5c8"
+        workflow_job_template: "Auto Healing Drift Detection"
+        unified_job_template: "Get Event Detail"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "b83a45ce-853b-4f8c-83a5-d71aee58d914"
+      - identifier: "62897a1f-8942-487e-875c-ce0e4cb7fdb0"
+        workflow_job_template: "Auto Healing Drift Detection"
+        unified_job_template: "Pre Remediate Plan"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "91853e37-b1b5-4fa4-ada0-1ac4003088c0"
+      - identifier: "7683a3fd-0a04-4ea3-be4a-1371e3fd4d22"
+        workflow_job_template: "Auto Healing Drift Detection"
+        unified_job_template: "Remediate Config Drift"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "7c2af161-608c-4204-82e6-a4ffeac63258"
+          - "a7767bc4-842d-4a3e-9c0f-fccb6265d9f8"
+      - identifier: "a7767bc4-842d-4a3e-9c0f-fccb6265d9f8"
+        inventory: "Demo Inventory"
+        workflow_job_template: "Auto Healing Drift Detection"
+        unified_job_template: "Close SNOW Change Record"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "91853e37-b1b5-4fa4-ada0-1ac4003088c0"
+        inventory: "Demo Inventory"
+        workflow_job_template: "Auto Healing Drift Detection"
+        unified_job_template: "Create SNOW Normal Change Record"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "7683a3fd-0a04-4ea3-be4a-1371e3fd4d22"
+      - identifier: "b83a45ce-853b-4f8c-83a5-d71aee58d914"
+        workflow_job_template: "Auto Healing Drift Detection"
+        unified_job_template: "Raise Incident Ticket"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "62897a1f-8942-487e-875c-ce0e4cb7fdb0"
+      - identifier: "7c2af161-608c-4204-82e6-a4ffeac63258"
+        workflow_job_template: "Auto Healing Drift Detection"
+        unified_job_template: "Close Incident Ticket"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "True"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    limit: ""
+    ask_limit_on_launch: false
+    ask_inventory_on_launch: false
+    webhook_service: ""
+    extra_vars: ""
+    survey_enabled: false
+    survey_spec:
+      name: ""
+      spec:
+        - max: 1024
+          min: 0
+          type: text
+          required: True
+          variable: tfc_workspace_id
+          new_question: True
+          question_name: !unsafe "TFC Workspace ID"
+        - max: 1024
+          min: 0
+          type: text
+          required: True
+          variable: tfc_workspace_name
+          new_question: True
+          question_name: !unsafe "TFC Workspace Name"
+        - max: 1024
+          min: 0
+          type: text
+          required: True
+          variable: tfc_organization_name
+          new_question: True
+          question_name: !unsafe "TFC Organization Name"
+      description: ""
+  - name: "export"
+    description: !unsafe ''
+    organization: "Default"
+    simplified_workflow_nodes:
+      - identifier: "7c2af161-608c-4204-82e6-a4ffeac63258"
+        workflow_job_template: "export"
+        unified_job_template: "Close Incident Ticket"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "a7767bc4-842d-4a3e-9c0f-fccb6265d9f8"
+        inventory: "Demo Inventory"
+        workflow_job_template: "export"
+        unified_job_template: "Close SNOW Change Record"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "7683a3fd-0a04-4ea3-be4a-1371e3fd4d22"
+        workflow_job_template: "export"
+        unified_job_template: "Remediate Config Drift"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "a7767bc4-842d-4a3e-9c0f-fccb6265d9f8"
+          - "7c2af161-608c-4204-82e6-a4ffeac63258"
+      - identifier: "b83a45ce-853b-4f8c-83a5-d71aee58d914"
+        workflow_job_template: "export"
+        unified_job_template: "Raise Incident Ticket"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "62897a1f-8942-487e-875c-ce0e4cb7fdb0"
+      - identifier: "91853e37-b1b5-4fa4-ada0-1ac4003088c0"
+        inventory: "Demo Inventory"
+        workflow_job_template: "export"
+        unified_job_template: "Create SNOW Normal Change Record"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "7683a3fd-0a04-4ea3-be4a-1371e3fd4d22"
+      - identifier: "80e1cbdc-f120-46f9-88bd-94343014d5c8"
+        workflow_job_template: "export"
+        unified_job_template: "Get Event Detail"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "b83a45ce-853b-4f8c-83a5-d71aee58d914"
+      - identifier: "62897a1f-8942-487e-875c-ce0e4cb7fdb0"
+        workflow_job_template: "export"
+        unified_job_template: "Pre Remediate Plan"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "91853e37-b1b5-4fa4-ada0-1ac4003088c0"
+    ask_variables_on_launch: "True"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    limit: ""
+    ask_limit_on_launch: false
+    ask_inventory_on_launch: false
+    webhook_service: ""
+    extra_vars: ""
+    survey_enabled: false
+    survey_spec:
+      name: ""
+      spec:
+        - max: 1024
+          min: 0
+          type: text
+          required: True
+          variable: tfc_workspace_id
+          new_question: True
+          question_name: !unsafe "TFC Workspace ID"
+        - max: 1024
+          min: 0
+          type: text
+          required: True
+          variable: tfc_workspace_name
+          new_question: True
+          question_name: !unsafe "TFC Workspace Name"
+        - max: 1024
+          min: 0
+          type: text
+          required: True
+          variable: tfc_organization_name
+          new_question: True
+          question_name: !unsafe "TFC Organization Name"
+      description: ""
+  - name: "Auto Healing Drift Detection @ 13:20:08"
+    description: !unsafe ''
+    organization: "Default"
+    simplified_workflow_nodes:
+      - identifier: "80e1cbdc-f120-46f9-88bd-94343014d5c8"
+        workflow_job_template: "Auto Healing Drift Detection @ 13:20:08"
+        unified_job_template: "Get Event Detail"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "b83a45ce-853b-4f8c-83a5-d71aee58d914"
+      - identifier: "62897a1f-8942-487e-875c-ce0e4cb7fdb0"
+        workflow_job_template: "Auto Healing Drift Detection @ 13:20:08"
+        unified_job_template: "Pre Remediate Plan"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "91853e37-b1b5-4fa4-ada0-1ac4003088c0"
+      - identifier: "b83a45ce-853b-4f8c-83a5-d71aee58d914"
+        workflow_job_template: "Auto Healing Drift Detection @ 13:20:08"
+        unified_job_template: "Raise Incident Ticket"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "62897a1f-8942-487e-875c-ce0e4cb7fdb0"
+      - identifier: "7c2af161-608c-4204-82e6-a4ffeac63258"
+        workflow_job_template: "Auto Healing Drift Detection @ 13:20:08"
+        unified_job_template: "Close Incident Ticket"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+      - identifier: "7683a3fd-0a04-4ea3-be4a-1371e3fd4d22"
+        workflow_job_template: "Auto Healing Drift Detection @ 13:20:08"
+        unified_job_template: "Remediate Config Drift"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "7c2af161-608c-4204-82e6-a4ffeac63258"
+          - "a7767bc4-842d-4a3e-9c0f-fccb6265d9f8"
+      - identifier: "91853e37-b1b5-4fa4-ada0-1ac4003088c0"
+        inventory: "Demo Inventory"
+        workflow_job_template: "Auto Healing Drift Detection @ 13:20:08"
+        unified_job_template: "Create SNOW Normal Change Record"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+        success_nodes:
+          - "7683a3fd-0a04-4ea3-be4a-1371e3fd4d22"
+      - identifier: "a7767bc4-842d-4a3e-9c0f-fccb6265d9f8"
+        inventory: "Demo Inventory"
+        workflow_job_template: "Auto Healing Drift Detection @ 13:20:08"
+        unified_job_template: "Close SNOW Change Record"
+        limit: ""
+        organization: "Default"
+        all_parents_must_converge: "False"
+    ask_variables_on_launch: "True"
+    allow_simultaneous: "False"
+    scm_branch: ""
+    limit: ""
+    ask_limit_on_launch: false
+    ask_inventory_on_launch: false
+    webhook_service: ""
+    extra_vars: ""
+    survey_enabled: false
+    survey_spec:
+      name: ""
+      spec:
+        - max: 1024
+          min: 0
+          type: text
+          required: True
+          variable: tfc_workspace_id
+          new_question: True
+          question_name: !unsafe "TFC Workspace ID"
+        - max: 1024
+          min: 0
+          type: text
+          required: True
+          variable: tfc_workspace_name
+          new_question: True
+          question_name: !unsafe "TFC Workspace Name"
+        - max: 1024
+          min: 0
+          type: text
+          required: True
+          variable: tfc_organization_name
+          new_question: True
+          question_name: !unsafe "TFC Organization Name"
+      description: ""
+...

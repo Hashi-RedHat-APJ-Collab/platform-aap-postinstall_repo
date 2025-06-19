@@ -1,0 +1,11 @@
+---
+controller_inventories:
+  - name: "Demo Inventory"
+    description: !unsafe ''
+    organization: "Default"
+    prevent_instance_group_fallback: False
+  - name: "Fred AWS"
+    description: !unsafe ''
+    organization: "Default"
+    prevent_instance_group_fallback: False
+...
