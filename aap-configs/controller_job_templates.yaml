@@ -1,51 +1,5 @@
 ---
 controller_templates:
-  - name: "Demo Job Template"
-    description: !unsafe ''
-    organization: "Default"
-    project: "Demo Project"
-    inventory: "Demo Inventory"
-    playbook: "hello_world.yml"
-    scm_branch: ""
-    forks: 0
-    limit: ""
-    verbosity: 0
-    job_type: "run"
-    job_slice_count: 1
-    use_fact_cache: false
-    credentials:
-      - "Demo Credential"
-    allow_simultaneous: false
-    ask_scm_branch_on_launch: false
-    ask_diff_mode_on_launch: false
-    ask_tags_on_launch: false
-    ask_skip_tags_on_launch: false
-    ask_job_type_on_launch: false
-    ask_verbosity_on_launch: false
-    ask_variables_on_launch: false
-    ask_inventory_on_launch: true
-    ask_limit_on_launch: false
-    ask_credential_on_launch: false
-    ask_execution_environment_on_launch: false
-    ask_labels_on_launch: false
-    ask_forks_on_launch: false
-    ask_job_slice_count_on_launch: false
-    ask_timeout_on_launch: false
-    ask_instance_groups_on_launch: false
-    extra_vars: ""
-    job_tags: ""
-    force_handlers: false
-    skip_tags: ""
-    start_at_task: ""
-    timeout: 0
-    custom_virtualenv: ""
-    host_config_key: ""
-    survey_enabled: false
-    become_enabled: false
-    diff_mode: false
-    webhook_service: ""
-    prevent_instance_group_fallback: false
-...
   - name: "Product Demos | Single demo setup"
     description: !unsafe ''
     organization: "Default"
@@ -106,7 +60,7 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Product Demos | Multi-demo setup"
     description: !unsafe ''
     organization: "Default"
@@ -168,7 +122,7 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Hashicorp Vault demo setup"
     description: !unsafe ''
     organization: "Default"
@@ -283,12 +237,12 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Create Standard Change Record"
     description: !unsafe ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
-    inventory: "Fred AWS"
+    inventory: "Demo Inventory"
     playbook: "playbooks/snow_create_cr.yml"
     scm_branch: ""
     forks: 0
@@ -298,7 +252,7 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: true
     credentials:
-      - "Fred SNOW Dev Instance"
+      - "SNOW Dev Instance"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -329,12 +283,12 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Install Vault Agent"
     description: !unsafe ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
-    inventory: "Fred AWS"
+    inventory: "Demo Inventory"
     playbook: "playbooks/1-install-vault-agent.yml"
     scm_branch: ""
     forks: 0
@@ -375,12 +329,12 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Install Application"
     description: !unsafe ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
-    inventory: "Fred AWS"
+    inventory: "Demo Inventory"
     playbook: "playbooks/2-install-podman-web.yml"
     scm_branch: ""
     forks: 0
@@ -421,12 +375,12 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Security Harden"
     description: !unsafe ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
-    inventory: "Fred AWS"
+    inventory: "Demo Inventory"
     playbook: "playbooks/3-compliance-enforce.yml"
     scm_branch: ""
     forks: 0
@@ -479,12 +433,12 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Post Validation"
     description: !unsafe ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
-    inventory: "Fred AWS"
+    inventory: "Demo Inventory"
     playbook: "playbooks/4-validation.yml"
     scm_branch: ""
     forks: 0
@@ -525,12 +479,12 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Close SNOW Change Record"
     description: !unsafe ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
-    inventory: "Fred AWS"
+    inventory: "Demo Inventory"
     playbook: "playbooks/snow_close_cr.yml"
     scm_branch: ""
     forks: 0
@@ -540,8 +494,8 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: false
     credentials:
-      - "Fred Machine"
-      - "Fred SNOW Dev Instance"
+      - "Demo Credential"
+      - "SNOW Dev Instance"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -572,12 +526,12 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Raise Incident Ticket"
     description: !unsafe ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
-    inventory: "Fred AWS"
+    inventory: "Demo Inventory"
     playbook: "playbooks/raise-incident-ticket.yml"
     scm_branch: ""
     forks: 0
@@ -587,7 +541,7 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: false
     credentials:
-      - "Fred SNOW Dev Instance"
+      - "SNOW Dev Instance"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -618,12 +572,12 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Update SNOW CMDB"
     description: !unsafe ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
-    inventory: "Fred AWS"
+    inventory: "Demo Inventory"
     playbook: "playbooks/snow_cmdb_update.yml"
     scm_branch: ""
     forks: 0
@@ -633,7 +587,7 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: false
     credentials:
-      - "Fred SNOW Dev Instance"
+      - "SNOW Dev Instance"
       - "hashicorp_vault_ssh_machine_creds_demo"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
@@ -665,7 +619,7 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Get Event Detail"
     description: !unsafe ''
     organization: "Default"
@@ -709,7 +663,7 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Remediate Config Drift"
     description: !unsafe ''
     organization: "Default"
@@ -724,7 +678,7 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: false
     credentials:
-      - "Fred SNOW Dev Instance"
+      - "SNOW Dev Instance"
       - "HCP Terraform API Token - CollabTeam"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
@@ -776,7 +730,7 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Pre Remediate Plan"
     description: !unsafe ''
     organization: "Default"
@@ -791,7 +745,7 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: false
     credentials:
-      - "Fred SNOW Dev Instance"
+      - "SNOW Dev Instance"
       - "HCP Terraform API Token - CollabTeam"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
@@ -843,7 +797,7 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Close Incident Ticket"
     description: !unsafe ''
     organization: "Default"
@@ -858,7 +812,7 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: false
     credentials:
-      - "Fred SNOW Dev Instance"
+      - "SNOW Dev Instance"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -889,7 +843,7 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "Create SNOW Normal Change Record"
     description: !unsafe ''
     organization: "Default"
@@ -904,8 +858,8 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: false
     credentials:
-      - "Fred Machine"
-      - "Fred SNOW Dev Instance"
+      - "Demo Credential"
+      - "SNOW Dev Instance"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -936,7 +890,7 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+
   - name: "ServiceNow Dev Instance Provisioning"
     description: !unsafe ''
     organization: "Default"
@@ -1010,4 +964,4 @@ controller_templates:
     diff_mode: false
     webhook_service: ""
     prevent_instance_group_fallback: false
-...
+

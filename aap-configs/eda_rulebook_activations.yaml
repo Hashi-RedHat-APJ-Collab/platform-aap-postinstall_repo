@@ -8,4 +8,4 @@ eda_rulebook_activations:
     organization_name: "Default"
     project_name: "demo-aap-post-deploy"
     decision_environment: "Default Decision Environment"
-...
+

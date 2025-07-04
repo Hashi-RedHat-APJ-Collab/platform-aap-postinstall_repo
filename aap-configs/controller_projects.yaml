@@ -1,19 +1,5 @@
 ---
 controller_projects:
-  - name: "Demo Project"
-    description: !unsafe ''
-    organization: "Default"
-    scm_type: "git"
-    scm_url: "https://github.com/ansible/ansible-tower-samples"
-    scm_branch: ""
-    scm_clean: false
-    scm_delete_on_update: false
-    scm_update_on_launch: false
-    scm_update_cache_timeout: "0"
-    scm_refspec: ""
-    allow_override: false
-    update_project: false
-    timeout: "0"
   - name: "Ansible Product Demos"
     description: !unsafe ''
     organization: "Default"
@@ -28,6 +14,7 @@ controller_projects:
     allow_override: false
     update_project: false
     timeout: "0"
+
   - name: "Hashicorp Vault Demos"
     description: !unsafe ''
     organization: "Default"
@@ -42,6 +29,7 @@ controller_projects:
     allow_override: false
     update_project: false
     timeout: "0"
+
   - name: "Ansible Automation Post Deploy Demos"
     description: !unsafe ''
     organization: "Default"
@@ -56,4 +44,4 @@ controller_projects:
     allow_override: false
     update_project: false
     timeout: "0"
-...
+

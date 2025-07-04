@@ -1,6 +1,0 @@
----
-aap_teams:
-  - name: "AppTeamA"
-    description: !unsafe ''
-    organization: "Default"
-...
