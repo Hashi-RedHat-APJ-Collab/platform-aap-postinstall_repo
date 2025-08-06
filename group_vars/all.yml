@@ -6,8 +6,8 @@
 # Set to true for production environments with valid SSL certificates
 apd_verify_ssl: false
 
-# Default controller admin password (override in vault or secure location)
-controller_admin_password: "REPLACEME"
+# Controller admin password - references the same value used during AAP installation
+controller_admin_password: "{{ lookup('env', 'AAP_ADMIN_PASSWORD') }}"
 
-# Automation Hub API token (should be overridden with actual token)
-automationhub_api_token: "REPLACEME"
+# Automation Hub API token - references the same value used during AAP installation  
+automationhub_api_token: "{{ lookup('env', 'HUB_OFFLINE_TOKEN') }}"
