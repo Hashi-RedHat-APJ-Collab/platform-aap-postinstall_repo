@@ -1,0 +1,30 @@
+---
+# AAP Controller Configuration as Code
+# This file should contain configuration variables, not tasks
+
+# Import credential types configuration
+controller_credential_types: "{{ lookup('file', 'aap-configs/controller_credential_types.yaml') | from_yaml | default([]) }}"
+
+# Import credentials configuration
+controller_credentials: "{{ lookup('file', 'aap-configs/controller_credentials.yaml') | from_yaml | default([]) }}"
+
+# Import projects configuration if it exists
+controller_projects: "{{ lookup('file', 'aap-configs/controller_projects.yaml', errors='ignore') | from_yaml | default([]) }}"
+
+# Import job templates configuration if it exists
+controller_job_templates: "{{ lookup('file', 'aap-configs/controller_job_templates.yaml', errors='ignore') | from_yaml | default([]) }}"
+
+# Import workflow job templates configuration if it exists
+controller_workflow_job_templates: "{{ lookup('file', 'aap-configs/controller_workflow_job_templates.yaml', errors='ignore') | from_yaml | default([]) }}"
+
+# Import organizations configuration if it exists
+controller_organizations: "{{ lookup('file', 'aap-configs/controller_organizations.yaml', errors='ignore') | from_yaml | default([]) }}"
+
+# Import teams configuration if it exists
+controller_teams: "{{ lookup('file', 'aap-configs/controller_teams.yaml', errors='ignore') | from_yaml | default([]) }}"
+
+# Import users configuration if it exists
+controller_users: "{{ lookup('file', 'aap-configs/controller_users.yaml', errors='ignore') | from_yaml | default([]) }}"
+
+# Import inventories configuration if it exists
+controller_inventories: "{{ lookup('file', 'aap-configs/controller_inventories.yaml', errors='ignore') | from_yaml | default([]) }}"
