@@ -1,70 +1,39 @@
 ---
-- name: Configure Ansible Automation Platform Post-Install
-  hosts: localhost
-  connection: local
-  gather_facts: true
-  vars_files:
-    - group_vars/all.yml
-  tasks:
+# AAP Controller Configuration as Code
+# This file should contain configuration variables as a dictionary/hash
 
-    - name: Debug - Show all available variables
-      ansible.builtin.debug:
-        msg: |
-          Available variables for debugging:
-          controller_admin_password: {{ controller_admin_password | default('NOT_SET') }}
-          gateway_admin_password: {{ gateway_admin_password | default('NOT_SET') }}
-          hub_admin_password: {{ hub_admin_password | default('NOT_SET') }}
-          new_install_password: {{ new_install_password | default('NOT_SET') }}
-          admin_password: {{ admin_password | default('NOT_SET') }}
-          ansible_hostname: {{ ansible_hostname | default('NOT_SET') }}
-          ansible_fqdn: {{ ansible_fqdn | default('NOT_SET') }}
-          groups: {{ groups | default({}) }}
+# Controller connection settings - use variables that should be available from AAP installer
+controller_hostname: "{{ ansible_fqdn | default(ansible_hostname) | default('aap.demo.local') }}"
+controller_username: admin
+controller_password: "{{ controller_admin_password | default(gateway_admin_password) | default(hub_admin_password) }}"
+controller_validate_certs: false
 
-    - name: Wait for Controller to be ready before configuration
-      ansible.builtin.uri:
-        url: "https://{{ groups.automationcontroller[0] | default(ansible_fqdn) | default(ansible_hostname) | default('aap.demo.local') }}/api/v2/ping/"
-        method: GET
-        validate_certs: "{{ apd_verify_ssl }}"
-        status_code: 200
-        timeout: 30
-      register: controller_ping
-      until: controller_ping.status == 200
-      retries: 30
-      delay: 10
+# Import credential types configuration
+controller_credential_types: "{{ (lookup('file', 'aap-configs/controller_credential_types.yaml', errors='ignore') | from_yaml).controller_credential_types | default([]) }}"
 
-    - name: Wait additional time for Controller services to fully initialize
-      ansible.builtin.pause:
-        seconds: 30
+# Import credentials configuration
+controller_credentials: "{{ (lookup('file', 'aap-configs/controller_credentials.yaml', errors='ignore') | from_yaml).controller_credentials | default([]) }}"
 
-    - name: Configure Controller Credential Types
-      ansible.builtin.include_role:
-        name: infra.controller_configuration.credential_types
-      vars:
-        controller_credential_types: "{{ lookup('file', 'aap-configs/controller_credential_types.yaml') | from_yaml }}"
+# Import projects configuration
+controller_projects: "{{ (lookup('file', 'aap-configs/controller_projects.yaml', errors='ignore') | from_yaml).controller_projects | default([]) }}"
 
-    - name: Configure Controller Credentials
-      ansible.builtin.include_role:
-        name: infra.controller_configuration.credentials
-      vars:
-        controller_credentials: "{{ lookup('file', 'aap-configs/controller_credentials.yaml') | from_yaml }}"
+# Import job templates configuration
+controller_job_templates: "{{ (lookup('file', 'aap-configs/controller_job_templates.yaml', errors='ignore') | from_yaml).controller_job_templates | default([]) }}"
 
-    - name: Configure Controller Projects
-      ansible.builtin.include_role:
-        name: infra.controller_configuration.projects
-      vars:
-        controller_projects: "{{ lookup('file', 'aap-configs/controller_projects.yaml') | from_yaml }}"
-      when: lookup('file', 'aap-configs/controller_projects.yaml', errors='ignore') != ''
+# Import workflow job templates configuration
+controller_workflow_job_templates: "{{ (lookup('file', 'aap-configs/controller_workflow_job_templates.yaml', errors='ignore') | from_yaml).controller_workflow_job_templates | default([]) }}"
 
-    - name: Configure Controller Job Templates
-      ansible.builtin.include_role:
-        name: infra.controller_configuration.job_templates
-      vars:
-        controller_job_templates: "{{ lookup('file', 'aap-configs/controller_job_templates.yaml') | from_yaml }}"
-      when: lookup('file', 'aap-configs/controller_job_templates.yaml', errors='ignore') != ''
+# Import organizations configuration
+controller_organizations: "{{ (lookup('file', 'aap-configs/controller_organizations.yaml', errors='ignore') | from_yaml).controller_organizations | default([]) }}"
 
-    - name: Configure Controller Workflow Job Templates
-      ansible.builtin.include_role:
-        name: infra.controller_configuration.workflow_job_templates
-      vars:
-        controller_workflow_job_templates: "{{ lookup('file', 'aap-configs/controller_workflow_job_templates.yaml') | from_yaml }}"
-      when: lookup('file', 'aap-configs/controller_workflow_job_templates.yaml', errors='ignore') != ''
+# Import teams configuration
+controller_teams: "{{ (lookup('file', 'aap-configs/controller_teams.yaml', errors='ignore') | from_yaml).controller_teams | default([]) }}"
+
+# Import users configuration
+controller_users: "{{ (lookup('file', 'aap-configs/controller_users.yaml', errors='ignore') | from_yaml).controller_users | default([]) }}"
+
+# Import inventories configuration
+controller_inventories: "{{ (lookup('file', 'aap-configs/controller_inventories.yaml', errors='ignore') | from_yaml).controller_inventories | default([]) }}"
+
+# Import schedules configuration
+controller_schedules: "{{ (lookup('file', 'aap-configs/controller_schedules.yaml', errors='ignore') | from_yaml).controller_schedules | default([]) }}"
