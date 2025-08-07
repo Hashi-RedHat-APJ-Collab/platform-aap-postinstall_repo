@@ -5,15 +5,15 @@
 apd_verify_ssl: false
 
 # Controller connection settings - these should match what was used during installation
-controller_hostname: "{{ ansible_hostname | default('aap.demo.local') }}"
+controller_hostname: "{{ ansible_fqdn | default(ansible_hostname) | default('aap.demo.local') }}"
 controller_username: admin
-controller_password: "{{ aap_admin_password }}"
+controller_password: "{{ admin_password | default(new_install_password) | default('admin') }}"
 controller_validate_certs: "{{ apd_verify_ssl }}"
 
 # These values should match what was used during AAP installation
-# The AAP installer will have set these in the environment or inventory
-aap_admin_password: "{{ lookup('env', 'AAP_ADMIN_PASSWORD') }}"
-automationhub_api_token: "{{ lookup('env', 'HUB_OFFLINE_TOKEN') }}"
+# During post-install, these should be available from the AAP installer context
+aap_admin_password: "{{ admin_password | default(new_install_password) | default('admin') }}"
+automationhub_api_token: "{{ automationhub_api_token | default('') }}"
 
 # Controller admin password - use a different variable name to avoid recursion
 controller_admin_password: "{{ aap_admin_password }}"
