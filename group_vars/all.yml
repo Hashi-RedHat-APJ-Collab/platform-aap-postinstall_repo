@@ -2,9 +2,13 @@
 # Global variables for AAP configuration
 
 # SSL verification setting for AAP connections
-# Set to false for demo/development environments with self-signed certificates
-# Set to true for production environments with valid SSL certificates
 apd_verify_ssl: false
+
+# Controller connection settings
+controller_hostname: "{{ groups.automationcontroller[0] | default('aap.demo.local') }}"
+controller_username: admin
+controller_password: "{{ lookup('env', 'AAP_ADMIN_PASSWORD') }}"
+controller_validate_certs: "{{ apd_verify_ssl }}"
 
 # Controller admin password - references the same value used during AAP installation
 controller_admin_password: "{{ lookup('env', 'AAP_ADMIN_PASSWORD') }}"
