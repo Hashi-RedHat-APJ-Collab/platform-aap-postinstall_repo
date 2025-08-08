@@ -23,12 +23,12 @@ controller_projects:
     scm_branch: "main"
     scm_clean: false
     scm_delete_on_update: false
-    scm_update_on_launch: true
+    scm_update_on_launch: false
     scm_update_cache_timeout: "0"
     scm_refspec: ""
     allow_override: false
     update_project: false
-    timeout: "0"
+    timeout: "120"
 
   - name: "Ansible Automation Post Deploy Demos"
     description: !unsafe ''

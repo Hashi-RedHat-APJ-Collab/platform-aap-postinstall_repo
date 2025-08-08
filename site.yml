@@ -15,6 +15,11 @@ apd_verify_ssl: false
 controller_configuration_credentials_secure_logging: false
 controller_configuration_credential_types_secure_logging: false
 
+# Project configuration settings - make project updates more resilient
+controller_configuration_projects_secure_logging: false
+controller_configuration_projects_async_retries: 60
+controller_configuration_projects_async_delay: 2
+
 # Import credential types configuration
 controller_credential_types: "{{ (lookup('file', 'aap-configs/controller_credential_types.yaml', errors='ignore') | from_yaml).controller_credential_types | default([]) }}"
 
