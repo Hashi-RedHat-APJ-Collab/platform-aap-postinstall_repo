@@ -8,6 +8,9 @@ controller_username: admin
 controller_password: "{{ controller_admin_password | default(gateway_admin_password) | default(hub_admin_password) }}"
 controller_validate_certs: false
 
+# SSL verification setting for AAP operations
+apd_verify_ssl: false
+
 # Import credential types configuration
 controller_credential_types: "{{ (lookup('file', 'aap-configs/controller_credential_types.yaml', errors='ignore') | from_yaml).controller_credential_types | default([]) }}"
 
