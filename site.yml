@@ -11,6 +11,10 @@ controller_validate_certs: false
 # SSL verification setting for AAP operations
 apd_verify_ssl: false
 
+# Disable secure logging for credential operations to see actual error messages
+controller_configuration_credentials_secure_logging: false
+controller_configuration_credential_types_secure_logging: false
+
 # Import credential types configuration
 controller_credential_types: "{{ (lookup('file', 'aap-configs/controller_credential_types.yaml', errors='ignore') | from_yaml).controller_credential_types | default([]) }}"
 
