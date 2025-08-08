@@ -452,7 +452,7 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: false
     credentials:
-      - "Demo Credential"
+      - "Demo Machine Credential"
       - "SNOW Dev Instance"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
@@ -815,7 +815,7 @@ controller_templates:
     job_slice_count: 1
     use_fact_cache: false
     credentials:
-      - "Demo Credential"
+      - "Demo Machine Credential"
       - "SNOW Dev Instance"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
@@ -848,77 +848,12 @@ controller_templates:
     webhook_service: ""
     prevent_instance_group_fallback: false
 
-  - name: "ServiceNow Dev Instance Provisioning"
-    description: !unsafe ''
-    organization: "Default"
-    project: "Ansible Automation Post Deploy Demos"
-    inventory: "Demo Inventory"
-    playbook: "playbooks/service_now/provision-servicenow-dev.yml"
-    scm_branch: ""
-    forks: 0
-    limit: ""
-    verbosity: 4
-    job_type: "run"
-    job_slice_count: 1
-    use_fact_cache: false
-    allow_simultaneous: false
-    ask_scm_branch_on_launch: false
-    ask_diff_mode_on_launch: false
-    ask_tags_on_launch: false
-    ask_skip_tags_on_launch: false
-    ask_job_type_on_launch: false
-    ask_verbosity_on_launch: false
-    ask_variables_on_launch: false
-    ask_inventory_on_launch: false
-    ask_limit_on_launch: false
-    ask_credential_on_launch: false
-    ask_execution_environment_on_launch: false
-    ask_labels_on_launch: false
-    ask_forks_on_launch: false
-    ask_job_slice_count_on_launch: false
-    ask_timeout_on_launch: false
-    ask_instance_groups_on_launch: false
-    extra_vars: ""
-    job_tags: ""
-    force_handlers: false
-    skip_tags: ""
-    start_at_task: ""
-    timeout: 0
-    custom_virtualenv: ""
-    host_config_key: ""
-    survey_enabled: true
-    survey_spec:
-      name: ""
-      spec:
-        - max: 1024
-          min: 0
-          type: text
-          default: !unsafe "srlynch@gmail.com"
-          required: True
-          variable: servicenow_dev_username
-          new_question: False
-          question_name: !unsafe "servicenow_dev_username"
-        - max: 1024
-          min: 0
-          type: password
-          default: !unsafe "''"
-          required: True
-          variable: servicenow_dev_password
-          new_question: False
-          question_name: !unsafe "servicenow_dev_password"
-          question_description: !unsafe "servicenow_dev_password"
-        - max: 1024
-          min: 0
-          type: text
-          default: !unsafe "demo"
-          required: True
-          variable: instance_name
-          new_question: False
-          question_name: !unsafe "instance_name"
-          question_description: !unsafe "instance_name"
-      description: ""
-    become_enabled: false
-    diff_mode: false
-    webhook_service: ""
-    prevent_instance_group_fallback: false
+  # Temporarily removed - playbook doesn't exist in current project
+  # - name: "ServiceNow Dev Instance Provisioning"
+  #   description: !unsafe ''
+  #   organization: "Default" 
+  #   project: "Ansible Automation Post Deploy Demos"
+  #   inventory: "Demo Inventory"
+  #   playbook: "playbooks/service_now/provision-servicenow-dev.yml"
+  #   ...rest of config...
 
