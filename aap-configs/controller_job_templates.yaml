@@ -126,7 +126,7 @@ controller_templates:
   - name: "Hashicorp Vault demo setup"
     description: !unsafe ''
     organization: "Default"
-    project: "Hashicorp Vault Demos"
+    project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
     playbook: "playbooks/aap/update_credentials.yml"
     scm_branch: ""

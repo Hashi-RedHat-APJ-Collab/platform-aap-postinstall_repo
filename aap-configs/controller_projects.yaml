@@ -15,20 +15,21 @@ controller_projects:
     update_project: false
     timeout: "0"
 
-  - name: "Hashicorp Vault Demos"
-    description: !unsafe ''
-    organization: "Default"
-    scm_type: "git"
-    scm_url: "https://github.com/Hashi-RedHat-APJ-Collab/platform-aap-vault-config"
-    scm_branch: "main"
-    scm_clean: false
-    scm_delete_on_update: false
-    scm_update_on_launch: false
-    scm_update_cache_timeout: "0"
-    scm_refspec: ""
-    allow_override: false
-    update_project: false
-    timeout: "120"
+  # Temporarily disabled during initial setup due to Git sync issues
+  # - name: "Hashicorp Vault Demos"
+  #   description: !unsafe ''
+  #   organization: "Default"
+  #   scm_type: "git"
+  #   scm_url: "https://github.com/Hashi-RedHat-APJ-Collab/platform-aap-vault-config"
+  #   scm_branch: "main"
+  #   scm_clean: false
+  #   scm_delete_on_update: false
+  #   scm_update_on_launch: false
+  #   scm_update_cache_timeout: "0"
+  #   scm_refspec: ""
+  #   allow_override: false
+  #   update_project: false
+  #   timeout: "120"
 
   - name: "Ansible Automation Post Deploy Demos"
     description: !unsafe ''
