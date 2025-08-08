@@ -4,15 +4,7 @@ controller_workflows:
     description: !unsafe ''
     organization: "Default"
     simplified_workflow_nodes:
-      - identifier: "Inventory Sync"
-        workflow_job_template: "AAP Post Deployment"
-        unified_job_template: "Demo Inventory"
-        limit: ""
-        organization: "Default"
-        all_parents_must_converge: "False"
-        success_nodes:
-          - "061d7c35-2af9-4ac9-a1c1-37d933878204"
-          - "b66bd6cf-3fc1-47fe-ac77-05da2c5efadd"
+      # Removed problematic "Inventory Sync" node that referenced inventory as job template
       - identifier: "f523c7c7-1e9e-4af0-a76e-53c8a87cbd23"
         workflow_job_template: "AAP Post Deployment"
         unified_job_template: "Close SNOW Change Record"
