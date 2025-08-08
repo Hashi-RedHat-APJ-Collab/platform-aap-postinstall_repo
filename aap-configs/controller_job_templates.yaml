@@ -297,8 +297,7 @@ controller_templates:
     job_type: "run"
     job_slice_count: 1
     use_fact_cache: false
-    credentials:
-      - "hashicorp_vault_ssh_machine_creds_demo"
+    credentials: []
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -309,26 +308,7 @@ controller_templates:
     ask_variables_on_launch: false
     ask_inventory_on_launch: true
     ask_limit_on_launch: false
-    ask_credential_on_launch: false
-    ask_execution_environment_on_launch: false
-    ask_labels_on_launch: false
-    ask_forks_on_launch: false
-    ask_job_slice_count_on_launch: false
-    ask_timeout_on_launch: false
-    ask_instance_groups_on_launch: false
-    extra_vars: ""
-    job_tags: ""
-    force_handlers: false
-    skip_tags: ""
-    start_at_task: ""
-    timeout: 0
-    custom_virtualenv: ""
-    host_config_key: ""
-    survey_enabled: false
-    become_enabled: false
-    diff_mode: false
-    webhook_service: ""
-    prevent_instance_group_fallback: false
+    ask_credential_on_launch: true
 
   - name: "Install Application"
     description: !unsafe ''
@@ -343,8 +323,7 @@ controller_templates:
     job_type: "run"
     job_slice_count: 1
     use_fact_cache: false
-    credentials:
-      - "hashicorp_vault_ssh_machine_creds_demo"
+    credentials: []
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -355,26 +334,7 @@ controller_templates:
     ask_variables_on_launch: false
     ask_inventory_on_launch: true
     ask_limit_on_launch: false
-    ask_credential_on_launch: false
-    ask_execution_environment_on_launch: false
-    ask_labels_on_launch: false
-    ask_forks_on_launch: false
-    ask_job_slice_count_on_launch: false
-    ask_timeout_on_launch: false
-    ask_instance_groups_on_launch: false
-    extra_vars: ""
-    job_tags: ""
-    force_handlers: false
-    skip_tags: ""
-    start_at_task: ""
-    timeout: 0
-    custom_virtualenv: ""
-    host_config_key: ""
-    survey_enabled: false
-    become_enabled: false
-    diff_mode: false
-    webhook_service: ""
-    prevent_instance_group_fallback: false
+    ask_credential_on_launch: true
 
   - name: "Security Harden"
     description: !unsafe ''
@@ -389,8 +349,7 @@ controller_templates:
     job_type: "run"
     job_slice_count: 1
     use_fact_cache: false
-    credentials:
-      - "hashicorp_vault_ssh_machine_creds_demo"
+    credentials: []
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -401,7 +360,7 @@ controller_templates:
     ask_variables_on_launch: false
     ask_inventory_on_launch: true
     ask_limit_on_launch: false
-    ask_credential_on_launch: false
+    ask_credential_on_launch: true
     ask_execution_environment_on_launch: false
     ask_labels_on_launch: false
     ask_forks_on_launch: false
@@ -447,8 +406,7 @@ controller_templates:
     job_type: "run"
     job_slice_count: 1
     use_fact_cache: false
-    credentials:
-      - "hashicorp_vault_ssh_machine_creds_demo"
+    credentials: []
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -459,7 +417,7 @@ controller_templates:
     ask_variables_on_launch: false
     ask_inventory_on_launch: true
     ask_limit_on_launch: false
-    ask_credential_on_launch: false
+    ask_credential_on_launch: true
     ask_execution_environment_on_launch: false
     ask_labels_on_launch: false
     ask_forks_on_launch: false
@@ -588,7 +546,6 @@ controller_templates:
     use_fact_cache: false
     credentials:
       - "SNOW Dev Instance"
-      - "hashicorp_vault_ssh_machine_creds_demo"
     allow_simultaneous: false
     ask_scm_branch_on_launch: false
     ask_diff_mode_on_launch: false
@@ -599,7 +556,7 @@ controller_templates:
     ask_variables_on_launch: false
     ask_inventory_on_launch: true
     ask_limit_on_launch: false
-    ask_credential_on_launch: false
+    ask_credential_on_launch: true
     ask_execution_environment_on_launch: false
     ask_labels_on_launch: false
     ask_forks_on_launch: false
