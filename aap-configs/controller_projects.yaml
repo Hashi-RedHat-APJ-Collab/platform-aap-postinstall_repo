@@ -1,12 +1,12 @@
 ---
 controller_projects:
-  - name: Ansible Product Demos
-    organization: Default
-    scm_type: git
-    scm_url: '{{ apd_git_repo }}'
-    scm_branch: '{{ apd_git_repo_branch }}'
-    default_environment: Product Demos EE
-    wait: true
+  # - name: Ansible Product Demos
+  #   organization: Default
+  #   scm_type: git
+  #   scm_url: '{{ apd_git_repo }}'
+  #   scm_branch: '{{ apd_git_repo_branch }}'
+  #   default_environment: Product Demos EE
+  #   wait: true
 
   - name: "Hashicorp Vault Demos"
     organization: Default
