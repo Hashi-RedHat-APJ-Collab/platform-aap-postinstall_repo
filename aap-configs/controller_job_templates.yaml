@@ -1,7 +1,7 @@
 ---
 controller_templates:
   # - name: "Product Demos | Single demo setup"
-  #   description: !unsafe ''
+  #   description:  ''
   #   organization: "Default"
   #   project: "Ansible Product Demos"
   #   inventory: "Demo Inventory"
@@ -54,7 +54,7 @@ controller_templates:
   #           - "satellite"
   #         required: True
   #         variable: demo
-  #         question_name: !unsafe "Demo Category"
+  #         question_name:  "Demo Category"
   #     description: ""
   #   become_enabled: false
   #   diff_mode: false
@@ -62,7 +62,7 @@ controller_templates:
   #   prevent_instance_group_fallback: false
 
   # - name: "Product Demos | Multi-demo setup"
-  #   description: !unsafe ''
+  #   description:  ''
   #   organization: "Default"
   #   project: "Ansible Product Demos"
   #   inventory: "Demo Inventory"
@@ -113,26 +113,98 @@ controller_templates:
   #           - "openshift"
   #           - "satellite"
   #           - "windows"
-  #         default: !unsafe "cloud\nlinux\nnetwork\nopenshift\nwindows"
+  #         default:  "cloud\nlinux\nnetwork\nopenshift\nwindows"
   #         required: True
   #         variable: demos
-  #         question_name: !unsafe "Which demos do you want to configure?"
+  #         question_name:  "Which demos do you want to configure?"
   #     description: ""
   #   become_enabled: false
   #   diff_mode: false
   #   webhook_service: ""
   #   prevent_instance_group_fallback: false
 
-  # Temporarily disabled - requires Hashicorp Vault Demos project which has sync issues
-  # - name: "Hashicorp Vault demo setup"
-  #   description: !unsafe ''
-  #   organization: "Default"
-  #   project: "Ansible Automation Post Deploy Demos"
-  #   playbook: "playbooks/aap/update_credentials.yml"
-  #   ...rest of config...
+
+  - name: "Hashicorp Vault demo setup"
+    job_type: run
+    inventory: Demo Inventory
+    project: Hashicorp Vault Demos
+    playbook: "playbooks/aap/update_credentials.yml"
+    credentials: Controller Credential
+    execution_environment: Product Demos EE
+    allow_simultaneous: true
+    survey_enabled: true
+    survey_spec:
+      name: ''
+      description: ''
+      spec:
+        - type: text
+          question_name: tenant
+          variable: tenant
+          required: true
+          default: 'demo'
+        - type: text
+          question_name: organization_name
+          variable: organization_name
+          required: false
+          default: 'Default'
+        - type: text
+          question_name: vault_url
+          variable: vault_url
+          required: false
+          default: 'https://tf-aap-public-vault-76d1afab.7739a0fc.z1.hashicorp.cloud:8200'
+        - type: text
+          question_name: vault_namespace
+          variable: vault_namespace
+          required: false  
+          default: 'admin/hashi-redhat'
+        - type: password
+          question_name: secret_id
+          variable: secret_id
+          required: true
+        - type: password
+          question_name: role_id
+          variable: role_id
+          required: true
+        - type: text
+          question_name: aap_url
+          variable: aap_url
+          required: true
+          default: 'https://aap.demo.local'
+        - type: text
+          question_name: state
+          variable: state
+          required: false
+          default: 'present'
+        - type: text
+          question_name: ssh_user
+          variable: machine_user
+          required: false
+          default: 'aap'
+        - type: password
+          question_name: ssh_private_key
+          variable: ssh_private_key
+          required: true
+        - type: text
+          question_name: ssh_public_key
+          variable: ssh_public_key
+          required: true
+        - type: text
+          question_name: auth_path
+          variable: auth_path
+          required: false
+          default: 'approle'
+        - type: text
+          question_name: ssh_vault_role
+          variable: ssh_vault_role
+          required: true
+        - type: text
+          question_name: secret_path
+          variable: secret_path
+          required: false
+          default: 'ssh'
 
   - name: "Create Standard Change Record"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -178,7 +250,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Install Vault Agent"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -204,7 +276,7 @@ controller_templates:
     ask_credential_on_launch: true
 
   - name: "Install Application"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -230,7 +302,7 @@ controller_templates:
     ask_credential_on_launch: true
 
   - name: "Security Harden"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -275,11 +347,11 @@ controller_templates:
         - max: 1024
           min: 0
           type: text
-          default: !unsafe "e8"
+          default:  "e8"
           required: True
           variable: compliance_profile
           new_question: True
-          question_name: !unsafe "Compliance Profile"
+          question_name:  "Compliance Profile"
       description: ""
     become_enabled: false
     diff_mode: false
@@ -287,7 +359,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Post Validation"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -332,7 +404,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Close SNOW Change Record"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -379,7 +451,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Raise Incident Ticket"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -425,7 +497,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Update SNOW CMDB"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -471,7 +543,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Get Event Detail"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -515,7 +587,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Remediate Config Drift"
-    description: !unsafe ''
+    description: ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -562,19 +634,19 @@ controller_templates:
         - max: 1024
           min: 0
           type: text
-          default: !unsafe "ws-1KbG5voDWemxecsB"
+          default:  "ws-1KbG5voDWemxecsB"
           required: True
           variable: tfc_workplace_id
           new_question: True
-          question_name: !unsafe "TFC Workspace ID"
+          question_name:  "TFC Workspace ID"
         - max: 1024
           min: 0
           type: text
-          default: !unsafe "INC0010033"
+          default:  "INC0010033"
           required: True
           variable: ticket_number
           new_question: True
-          question_name: !unsafe "SNOW Incident Ticket Number"
+          question_name:  "SNOW Incident Ticket Number"
       description: ""
     become_enabled: false
     diff_mode: false
@@ -582,7 +654,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Pre Remediate Plan"
-    description: !unsafe ''
+    description:  ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -629,19 +701,19 @@ controller_templates:
         - max: 1024
           min: 0
           type: text
-          default: !unsafe "ws-1KbG5voDWemxecsB"
+          default:  "ws-1KbG5voDWemxecsB"
           required: True
           variable: tfc_workspace_id
           new_question: True
-          question_name: !unsafe "TFC Workpace ID"
+          question_name:  "TFC Workpace ID"
         - max: 1024
           min: 0
           type: text
-          default: !unsafe "INC0010033"
+          default:  "INC0010033"
           required: True
           variable: ticket_number
           new_question: False
-          question_name: !unsafe "SNOW Incident Ticket Number"
+          question_name:  "SNOW Incident Ticket Number"
       description: ""
     become_enabled: false
     diff_mode: false
@@ -649,7 +721,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Close Incident Ticket"
-    description: !unsafe ''
+    description:  ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -695,7 +767,7 @@ controller_templates:
     prevent_instance_group_fallback: false
 
   - name: "Create SNOW Normal Change Record"
-    description: !unsafe ''
+    description:  ''
     organization: "Default"
     project: "Ansible Automation Post Deploy Demos"
     inventory: "Demo Inventory"
@@ -743,7 +815,7 @@ controller_templates:
 
   # Temporarily removed - playbook doesn't exist in current project
   # - name: "ServiceNow Dev Instance Provisioning"
-  #   description: !unsafe ''
+  #   description:  ''
   #   organization: "Default" 
   #   project: "Ansible Automation Post Deploy Demos"
   #   inventory: "Demo Inventory"
