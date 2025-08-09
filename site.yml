@@ -2,14 +2,26 @@
 # AAP Controller Configuration as Code
 # This file should contain configuration variables as a dictionary/hash
 
+# Override these in job template extra vars if needed
+apd_ee_image_version: '25'
+apd_ee_image: quay.io/ansible-product-demos/apd-ee-{{ apd_ee_image_version }}:latest
+apd_git_repo: https://github.com/ansible/product-demos
+apd_git_repo_branch: main
+apd_verify_ssl: false
+
+servicenow_ee_image: quay.io/fredmkson/ee_snow:latest
+
+hashivault_git_repo: https://github.com/Hashi-RedHat-APJ-Collab/platform-aap-vault-config
+hashivault_git_repo_branch: main
+
+aap_postdeploy_git_repo: https://github.com/Hashi-RedHat-APJ-Collab/demo-aap-post-deploy
+aap_postdeploy_git_repo_branch: main
+
 # Controller connection settings - use variables that should be available from AAP installer
 controller_hostname: "{{ ansible_fqdn | default(ansible_hostname) | default('aap.demo.local') }}"
 controller_username: admin
 controller_password: "{{ controller_admin_password | default(gateway_admin_password) | default(hub_admin_password) }}"
 controller_validate_certs: false
-
-# SSL verification setting for AAP operations
-apd_verify_ssl: false
 
 # Disable secure logging for credential operations to see actual error messages
 controller_configuration_credentials_secure_logging: false
@@ -19,6 +31,7 @@ controller_configuration_credential_types_secure_logging: false
 controller_configuration_projects_secure_logging: false
 controller_configuration_projects_update_project: false
 
+controller_configuration_async_delay: 5
 controller_configuration_credentials_loop_delay: 5
 controller_configuration_credentials_async_retries: 120
 controller_configuration_credentials_async_delay: 30
@@ -32,32 +45,74 @@ controller_configuration_job_templates_async_retries: 120
 controller_configuration_job_templates_async_delay: 30
 controller_configuration_job_templates_loop_delay: 5
 
+# Define execution environments
+controller_execution_environments:
+  - name: Product Demos EE
+    image: '{{ apd_ee_image }}'
+  - name: ServiceNow Demos EE
+    image: '{{ servicenow_ee_image }}'
+
 # Import credential types configuration
-controller_credential_types: "{{ (lookup('file', 'aap-configs/controller_credential_types.yaml', errors='ignore') | from_yaml).controller_credential_types | default([]) }}"
+controller_credential_types: >-
+  {{ (lookup('file', 'aap-configs/controller_credential_types.yaml', errors='ignore') |
+      from_yaml).controller_credential_types |
+      default([]) }}
 
 # Import credentials configuration
-controller_credentials: "{{ (lookup('file', 'aap-configs/controller_credentials.yaml', errors='ignore') | from_yaml).controller_credentials | default([]) }}"
+controller_credentials: >-
+  {{ (lookup('file', 'aap-configs/controller_credentials.yaml', errors='ignore') |
+      from_yaml).controller_credentials |
+      default([]) }}
 
 # Import projects configuration
-controller_projects: "{{ (lookup('file', 'aap-configs/controller_projects.yaml', errors='ignore') | from_yaml).controller_projects | default([]) }}"
+controller_projects: >-
+  {{ (lookup('file', 'aap-configs/controller_projects.yaml', errors='ignore') |
+      from_yaml).controller_projects |
+      default([]) }}
 
 # Import job templates configuration
-controller_job_templates: "{{ (lookup('file', 'aap-configs/controller_job_templates.yaml', errors='ignore') | from_yaml).controller_job_templates | default([]) }}"
+controller_job_templates: >-
+  {{ (lookup('file', 'aap-configs/controller_job_templates.yaml', errors='ignore') |
+      from_yaml).controller_job_templates |
+      default([]) }}
 
 # Import workflow job templates configuration
-controller_workflow_job_templates: "{{ (lookup('file', 'aap-configs/controller_workflow_job_templates.yaml', errors='ignore') | from_yaml).controller_workflow_job_templates | default([]) }}"
+controller_workflow_job_templates: >-
+  {{ (lookup('file', 'aap-configs/controller_workflow_job_templates.yaml', errors='ignore') |
+      from_yaml).controller_workflow_job_templates |
+      default([]) }}
 
 # Import organizations configuration
-controller_organizations: "{{ (lookup('file', 'aap-configs/controller_organizations.yaml', errors='ignore') | from_yaml).controller_organizations | default([]) }}"
+controller_organizations: >-
+  {{ (lookup('file', 'aap-configs/controller_organizations.yaml', errors='ignore') |
+      from_yaml).controller_organizations |
+      default([
+        {
+          'name': 'Default',
+          'galaxy_credentials': ['Ansible Galaxy', 'Automation Hub']
+        }
+      ]) }}
 
 # Import teams configuration
-controller_teams: "{{ (lookup('file', 'aap-configs/controller_teams.yaml', errors='ignore') | from_yaml).controller_teams | default([]) }}"
+controller_teams: >-
+  {{ (lookup('file', 'aap-configs/controller_teams.yaml', errors='ignore') |
+      from_yaml).controller_teams |
+      default([]) }}
 
 # Import users configuration
-controller_users: "{{ (lookup('file', 'aap-configs/controller_users.yaml', errors='ignore') | from_yaml).controller_users | default([]) }}"
+controller_users: >-
+  {{ (lookup('file', 'aap-configs/controller_users.yaml', errors='ignore') |
+      from_yaml).controller_users |
+      default([]) }}
 
 # Import inventories configuration
-controller_inventories: "{{ (lookup('file', 'aap-configs/controller_inventories.yaml', errors='ignore') | from_yaml).controller_inventories | default([]) }}"
+controller_inventories: >-
+  {{ (lookup('file', 'aap-configs/controller_inventories.yaml', errors='ignore') |
+      from_yaml).controller_inventories |
+      default([]) }}
 
 # Import schedules configuration
-controller_schedules: "{{ (lookup('file', 'aap-configs/controller_schedules.yaml', errors='ignore') | from_yaml).controller_schedules | default([]) }}"
+controller_schedules: >-
+  {{ (lookup('file', 'aap-configs/controller_schedules.yaml', errors='ignore') |
+      from_yaml).controller_schedules |
+      default([]) }}
