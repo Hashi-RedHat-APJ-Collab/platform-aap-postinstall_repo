@@ -29,6 +29,7 @@ controller_projects:
     allow_override: false
     update_project: false
     timeout: "120"
+    wait: true
 
   - name: "Ansible Automation Post Deploy Demos"
     description: 'Ansible Automation Post Deploy Demos'
@@ -44,4 +45,5 @@ controller_projects:
     allow_override: false
     update_project: false
     timeout: "0"
+    wait: true
 
